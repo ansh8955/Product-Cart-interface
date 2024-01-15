@@ -5,7 +5,7 @@ const Products = [
     { id: 4, name: 'Product-4', price: 400 },
   ];
 
-  
+  let cart = [];  
   const productsContainer = document.getElementById('productsContainer');
   const cartContainer = document.getElementById('cartContainer');
   
@@ -71,6 +71,12 @@ const Products = [
   }
   
   function removeFromCart(productId) {
+
+    if (cart.length === 0) {
+      alert("You haven't added any product yet. Please add products to your cart.");
+      return;
+
+      }
     const existingItem = cart.find(item => item.id === productId);
   
     if (existingItem) {
@@ -89,7 +95,7 @@ const Products = [
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   }
   
-  let cart = [];
+
   
   renderProducts();
   renderCart();
